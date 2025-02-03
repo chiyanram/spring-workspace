@@ -1,0 +1,74 @@
+[versions]
+springBoot = "3.4.2"
+moduleGraphPlugin = "2.7.3"
+vanniktechPublish = "0.30.0"
+jib = "3.4.4"
+testContainers = "1.20.3"
+jooq = "3.19.15"
+graalvm = "0.10.4"
+
+[libraries]
+# HTTP
+# retrofit: typesafe HTTP clients
+
+# Utility
+guava = { module = "com.google.guava:guava", version = "33.3.1-jre" }
+zeroAllocationHashing = { module = "net.openhft:zero-allocation-hashing", version = "0.27ea0" }
+commonsValidator = { module = "commons-validator:commons-validator", version = "1.9.0" }
+
+# Authentication
+# JWT library; jjwt or auth0/java-jwt
+
+# Concurrency control
+# https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581
+# When needed, Netfix's adaptive concurrency control: https://github.com/cashapp/misk/blob/master/misk/src/main/kotlin/misk/web/interceptors/ConcurrencyLimitsInterceptor.kt
+# concurrencyLimitsGrpc = { module = "com.netflix.concurrency-limits:concurrency-limits-grpc:0.5.0" }
+
+# HVault
+# spring-cloud-starter-vault-config
+
+# SQL
+mysqlConnector = { module = "com.mysql:mysql-connector-j", version = "9.1.0" }
+jooqMetaExtensions = { module = "org.jooq:jooq-meta-extensions", version.ref = "jooq" }
+
+# Classpath scanning
+classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.172" }
+
+# bugsnag?
+
+# Tracing
+datasourceProxy = { module = "net.ttddyy:datasource-proxy", version = "1.10.1" }
+
+# Testing
+testContainersMysql = { module = "org.testcontainers:mysql", version.ref = "testContainers" }
+testContainersJunit = { module = "org.testcontainers:junit-jupiter", version.ref = "testContainers" }
+awaitilityKotlin = { module = "org.awaitility:kotlin", version = "4.1.0" }
+truth = { module = "com.google.truth:truth", version = "1.4.2" }
+testParameterInjector = { module = "com.google.testparameterinjector:test-parameter-injector", version = "1.18" }
+
+
+# hoverfly: test http server
+# kotlin test and kotlin test junit
+
+# Plugin versions. Required to workaround https://github.com/gradle/gradle/issues/17693
+# Also see: https://docs.google.com/document/d/1pI27eTeNVhhkwsXcSS0NEr5Gm1QGv_edithandling-h_61oEuasqnp6
+plugin-spring-boot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
+plugin-jooqCodegen = { module = "org.jooq:jooq-codegen-gradle", version.ref = "jooq" }
+plugin-vanniktechPublish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "vanniktechPublish" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+jooqCodegen = { id = "org.jooq.jooq-codegen-gradle", version.ref = "jooq" }
+
+# Maven package publishing
+vanniktechPublish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktechPublish" }
+
+# Docker image creation
+jib = { id = "com.google.cloud.tools.jib", version.ref = "jib" }
+
+# Dependency and module graph analysis
+dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "2.4.2" }
+moduleGraph = { id = "com.jraska.module.graph.assertion", version.ref = "moduleGraphPlugin" }
+
+# May be useful in the future
+# dependencyGuard = { id = " com.dropbox.dependency-guard", version.ref = "dependencyGuard" }

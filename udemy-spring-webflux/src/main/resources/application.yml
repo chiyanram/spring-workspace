@@ -1,0 +1,12 @@
+---
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+spring:
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        blocking:
+          enabled: false
