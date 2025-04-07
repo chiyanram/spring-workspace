@@ -21,3 +21,4 @@ rootProject.name = "spring-workspace"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include("udemy-spring-webflux")
+include("testcontainers-cosmos")

@@ -1,12 +1,24 @@
 ---
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p ${PID:-} --- [%15.15t] [%X] %40.40logger{39} : %m%n"
 management:
   endpoint:
     health:
       show-components: always
       show-details: always
+  tracing:
+    baggage:
+      correlation:
+        enabled: true
+        fields: X-Correlation-Id
+      enabled: true
+      remote-fields: X-Correlation-Id
 spring:
   cloud:
     circuitbreaker:
       resilience4j:
         blocking:
           enabled: false
+  reactor:
+    context-propagation: auto
